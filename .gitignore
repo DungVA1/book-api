@@ -6,3 +6,6 @@ public
 
 # package-lock.json file
 package-lock.json
+
+# build folder
+dist
