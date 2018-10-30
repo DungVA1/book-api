@@ -4,5 +4,5 @@ node_modules
 # public folder
 public
 
-# package-json.lock file
-package-json.lock
+# package-lock.json file
+package-lock.json
