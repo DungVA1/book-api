@@ -1,0 +1,36 @@
+{
+  "name": "api-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel src -d dist",
+    "start": "node dist/index.js",
+    "start-dev": "babel-node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DungVA1/book-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DungVA1/book-api/issues"
+  },
+  "homepage": "https://github.com/DungVA1/book-api#readme",
+  "dependencies": {
+    "ajv": "^6.5.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "eslint": "^5.8.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
+  }
+}
