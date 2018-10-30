@@ -1,10 +1,11 @@
-import { EXCEPTION_ERROR } from '../../constant/common/error-message';
+import { EXCEPTION } from '../../constant/common/error-message';
+import { statusCode } from '../../constant/common/status-code';
 
 export const exceptionHandler = () => {
   return {
     error: true,
-    statusCode: 500,
-    message: EXCEPTION_ERROR,
-    messageCode: 'EXCEPTION_ERROR',
+    statusCode: statusCode.EXCEPTION,
+    message: EXCEPTION,
+    messageCode: 'EXCEPTION',
   };
 };
