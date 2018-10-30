@@ -9,6 +9,22 @@
   "rules": {
       "semi": 2,
       "comma-spacing": "error",
-      "newline-before-return": "error"
+      "comma-style": ["error", "last"],
+      "newline-before-return": "error",
+      "comma-dangle": "error",
+      "arrow-spacing": "error",
+      "object-curly-newline": "error",
+      "object-property-newline": "error",
+      "no-await-in-loop": "error",
+      "no-console": "error",
+      "no-extra-semi": "error",
+      "array-callback-return": "error",
+      "consistent-return": "error",
+      "curly": ["error", "multi-line"],
+      "default-case": "error",
+      "eqeqeq": "error",
+      "no-trailing-spaces": ["error", { "ignoreComments": true }],
+      "no-multiple-empty-lines": ["error", { "max": 1 }],
+      "space-before-blocks": "error"
   }
 }
