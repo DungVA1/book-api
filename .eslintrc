@@ -11,7 +11,7 @@
       "comma-spacing": "error",
       "comma-style": ["error", "last"],
       "newline-before-return": "error",
-      "comma-dangle": "error",
+      "comma-dangle": ["error", "always-multiline"],
       "arrow-spacing": "error",
       "object-curly-newline": "error",
       "object-property-newline": "error",
@@ -25,6 +25,8 @@
       "eqeqeq": "error",
       "no-trailing-spaces": ["error", { "ignoreComments": true }],
       "no-multiple-empty-lines": ["error", { "max": 1 }],
-      "space-before-blocks": "error"
+      "space-before-blocks": "error",
+      "quotes": ["error", "single"],
+      "prefer-template": "error"
   }
 }
