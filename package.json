@@ -8,9 +8,13 @@
     "clean": "rimraf dist",
     "build": "npm run clean && babel src -d dist",
     "production": "node dist/index.js",
-    "start": "babel-node src/index.js --exec nodemon",
+    "start": "nodemon src/index.js --exec babel-node",
     "eslint": "eslint src"
   },
+  "pre-commit.silent": true,
+  "pre-commit": [
+    "eslint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DungVA1/book-api.git"
@@ -34,6 +38,7 @@
     "winston": "^3.1.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "pre-commit": "^1.2.2"
   }
 }

@@ -1,4 +1,5 @@
 import express from 'express';
+import logger from '../../src/lib/common/logger';
 import {
   bookRoute,
 } from './router';
@@ -10,6 +11,6 @@ export const init = () => {
   ]);
 
   app.listen(process.env.EXPRESS_PORT || 3000, () => {
-    console.log('LISTENNING AT 3000');
+    logger.info('LISTENNING AT 3000');
   });
 };
