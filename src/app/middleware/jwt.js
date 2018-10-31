@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-
+import { UNAUTHORIZE, TOKEN_IS_REQUIRED } from '../../constant/common/error-message';
+import { statusCode } from '../../constant/common/status-code';
 /**
  * @author Dung Vu Anh
  * Generate a token
@@ -38,9 +39,9 @@ export const verify = (req, res, next) => {
   const token = extractHeader(req);
   if (!token) {
     return res.json({
-      status: 400,
+      status: statusCode.TOKEN_IS_REQUIRED,
       error: true,
-      message: 'Token is required',
+      message: TOKEN_IS_REQUIRED,
       messageCode: 'TOKEN_IS_REQUIRED',
     });
   }
@@ -52,9 +53,9 @@ export const verify = (req, res, next) => {
 
   if (!tokenIsValid) {
     return res.json({
-      status: 401,
+      status: statusCode.UNAUTHORIZE,
       error: true,
-      message: 'Unauthorized',
+      message: UNAUTHORIZE,
       messageCode: 'UNAUTHORIZED',
     });
   }
