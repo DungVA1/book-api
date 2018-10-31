@@ -1,11 +1,13 @@
 import express from 'express';
-import logger from '../../src/lib/common/logger';
+import logger from '../lib/common/logger';
+import { verify } from './middleware/jwt';
 import {
   bookRoute,
 } from './router';
 
 export const init = () => {
   const app = express();
+  app.use(verify);
   app.use([
     bookRoute,
   ]);

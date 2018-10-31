@@ -38,8 +38,8 @@ export const decode = (token) => {
 export const verify = (req, res, next) => {
   const token = extractHeader(req);
   if (!token) {
-    return res.json({
-      status: statusCode.TOKEN_IS_REQUIRED,
+    return res.status(statusCode.UNAUTHORIZE).json({
+      status: statusCode.UNAUTHORIZE,
       error: true,
       message: TOKEN_IS_REQUIRED,
       messageCode: 'TOKEN_IS_REQUIRED',
