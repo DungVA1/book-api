@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "content": {
+      "type": "text",
+      "fields": {
+        "raw": {
+          "type": "keyword"
+        }
+      }
+    },
+    "view": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  }
+}

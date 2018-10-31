@@ -1,0 +1,58 @@
+{
+  "properties": {
+    "name": {
+      "type": "text",
+      "fields": {
+        "type": "keyword"
+      }
+    },
+    "email": {
+      "type": "text",
+      "fields": {
+        "type": "keyword"
+      }
+    },
+    "role": {
+      "id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "type": "keyword"
+        }
+      }
+    },
+    "status": {
+      "type": "keyword"
+    },
+    "address": {
+      "type": "text",
+      "fields": {
+        "raw": {
+          "type": "keyword"
+        }
+      }
+    },
+    "phone": {
+      "type": "text",
+      "fields": {
+        "raw": {
+          "type": "keyword"
+        }
+      }
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "numPost": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  }
+}

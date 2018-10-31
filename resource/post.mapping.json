@@ -1,0 +1,81 @@
+{
+  "properties": {
+    "title": {
+      "type": "text",
+      "fields": {
+        "raw": {
+          "type": "keyword"
+        }
+      }
+    },
+    "content": {
+      "type": "text"
+    },
+    "status": {
+      "type": "keyword"
+    },
+    "tags": {
+      "type": "keyword"
+    },
+    "user": {
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "name": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "email": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        }
+      }
+    },
+    "pinToTop": {
+      "type": "boolean"
+    },
+    "position": {
+      "type": "integer"
+    },
+    "comments": {
+      "properties": {
+        "cmtContent": {
+          "type": "text"
+        },
+        "cmtAuthorId": {
+          "type": "keyword"
+        },
+        "cmtAuthorName": {
+          "type": "text"
+        },
+        "like": {
+          "type": "integer"
+        },
+        "cmtCreatedAt": {
+          "type": "date"
+        },
+        "cmtUpdatedAt": {
+          "type": "date"
+        }
+      }
+    },
+    "view": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  }
+}
