@@ -12,7 +12,7 @@ export const signToken = (data) => {
     data,
     process.env.TOKEN_SECRET_KEY || '$_TOKEN_SECRET_KEY_DEFAULT_$',
     {
-      expiresIn: parseInt(process.env.TOKEN_EXPIRY_TIME, 10) * 60,
+      expiresIn: parseInt(process.env.TOKEN_EXPIRY_TIME || 5, 10) * 60, // Default 5 minutes
     }
   );
 };

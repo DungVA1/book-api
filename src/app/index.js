@@ -9,7 +9,9 @@ import {
 
 export const init = () => {
   const app = express();
-  app.use(verify);
+  app.use(express.json());
+  app.use(express.urlencoded());
+  app.use(/^((?!login|register).)*$/, verify);
   app.use([
     bookRoute,
     userRoute,
