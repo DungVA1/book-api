@@ -1,3 +1,3 @@
-import { init } from './app';
+import { initExpressApi } from './app';
 
-init();
+initExpressApi();

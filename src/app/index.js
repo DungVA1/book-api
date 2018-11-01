@@ -8,7 +8,7 @@ import {
   authRoute,
 } from './router';
 
-export const init = () => {
+export const initExpressApi = () => {
   const app = express();
   app.use(cors());
   app.use(express.json());
