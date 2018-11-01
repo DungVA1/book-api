@@ -6,8 +6,8 @@ const env = process.env.NODE_ENV || 'development';
 const logDir = '../../../log';
 
 // Create the log directory if it does not exist
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
+if (!fs.exists(logDir)) {
+  fs.mkdir(logDir);
 }
 
 const filename = path.join(logDir);
