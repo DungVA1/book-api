@@ -1,0 +1,5 @@
+{
+  "login": {
+    "POST": "login.schema.json"
+  }
+}

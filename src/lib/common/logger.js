@@ -1,38 +1,46 @@
-import { createLogger, format, transports } from 'winston';
-import fs from 'fs';
+import winston, { format } from 'winston';
 import path from 'path';
+import moment from 'moment';
 
-const env = process.env.NODE_ENV || 'development';
-const logDir = '../../../log';
+const { combine, timestamp, printf } = format;
 
-// Create the log directory if it does not exist
-if (!fs.exists(logDir)) {
-  fs.mkdir(logDir);
-}
+const myFormat = printf(info => {
+  return `[${info.timestamp}][${info.level.toUpperCase()}]${info.message}`;
+});
 
-const filename = path.join(logDir);
-
-const logger = createLogger({
-  // change level if in dev environment versus production
-  level: env === 'development' ? 'debug' : 'info',
-  format: format.combine(
-    format.timestamp({
-      format: 'YYYY-MM-DDTHH:mm:ss',
-    }),
-    format.printf(info => `[${info.timestamp}][${info.level}]: ${info.message}`)
+const log = winston.createLogger({
+  format: combine(
+    timestamp(),
+    myFormat
   ),
   transports: [
-    new transports.Console({
+    // info console log
+    new (winston.transports.Console)({
       level: 'info',
-      format: format.combine(
-        format.colorize(),
-        format.printf(
-          info => `[${info.timestamp}][${info.level}]: ${info.message}`
-        )
-      ),
+      name: 'info-console',
+      colorize: true,
     }),
-    new transports.File({ filename }),
+    // info log file
+    new (winston.transports.File)({
+      level: 'info',
+      name: 'info-file',
+      filename: path.resolve(__dirname, '../../../', 'logs',
+        `${moment().format('YYYYMMDD')}-info.log`),
+    }),
+    // errors console log
+    new (winston.transports.Console)({
+      level: 'error',
+      name: 'error-console',
+      colorize: true,
+    }),
+    // errors log file
+    new (winston.transports.File)({
+      level: 'error',
+      name: 'error-file',
+      filename: path.resolve(__dirname, '../../../', 'logs',
+        `${moment().format('YYYYMMDD')}-error.log`),
+    }),
   ],
 });
 
-export default logger;
+export default log;

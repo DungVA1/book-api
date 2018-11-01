@@ -9,3 +9,6 @@ package-lock.json
 
 # build folder
 dist
+
+# log folder
+logs

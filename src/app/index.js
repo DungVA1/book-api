@@ -7,6 +7,10 @@ import {
   userRoute,
   authRoute,
 } from './router';
+import packageJson from '../../package.json';
+
+const baseUrl = process.env.BASE_URL || '/api';
+const version = `v${(packageJson.version.split('.')[0] || 1)}`;
 
 export const initExpressApi = () => {
   const app = express();
@@ -14,7 +18,7 @@ export const initExpressApi = () => {
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(/^((?!login|register).)*$/, verify);
-  app.use([
+  app.use(`${baseUrl}/${version}`, [
     bookRoute,
     userRoute,
     authRoute,
