@@ -12,5 +12,8 @@
       "definitions/address.defs.json"
     ],
     "POST": "register.schema.json"
+  },
+  "change-password": {
+
   }
 }

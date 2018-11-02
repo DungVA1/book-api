@@ -4,8 +4,11 @@ import authHandlers from '../../handler/auth';
 
 export const authRoute = express.Router();
 
-authRoute.post('/register', validateBody, authHandlers);
+// List routers of auth api should be define in array routers
+const routers = [
+  '/login',
+  '/register',
+  '/change-password',
+];
 
-authRoute.post('/login', validateBody, authHandlers);
-
-authRoute.post('/change-password', validateBody, authHandlers);
+authRoute.post(routers, validateBody, authHandlers);
