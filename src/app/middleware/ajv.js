@@ -21,6 +21,9 @@ export const validateBody = async (req, res, next) => {
   try {
     const urlBase = req.url.split('/')[1];
     const method = req.method;
+    if (method.toUpperCase() === 'GET') {
+      next();
+    }
     const schemaFileName = _.get(definition, [urlBase, method]);
     const schemaDefinitions = _.get(definition, [urlBase, 'definitions']);
     if (!schemaFileName) {
