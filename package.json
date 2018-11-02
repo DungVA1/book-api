@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
-    "build": "npm run clean && babel src -d dist",
+    "build": "npm run clean && babel src -d dist && babel src/app/schema -d dist/app/schema --copy-files",
     "production": "node dist/index.js",
     "start": "nodemon src/index.js --exec babel-node",
     "eslint": "eslint src"
@@ -28,20 +28,21 @@
   "homepage": "https://github.com/DungVA1/book-api#readme",
   "dependencies": {
     "ajv": "^6.5.4",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "cors": "^2.8.4",
-    "eslint": "^5.8.0",
     "express": "^4.16.4",
     "fs-extra": "^7.0.0",
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "nodemon": "^1.18.5",
-    "rimraf": "^2.6.2",
     "winston": "^3.1.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.2",
+    "eslint": "^5.8.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3"
   }
 }
