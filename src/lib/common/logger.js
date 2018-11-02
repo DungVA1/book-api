@@ -27,12 +27,6 @@ const log = winston.createLogger({
       filename: path.resolve(__dirname, '../../../', 'logs',
         `${moment().format('YYYYMMDD')}-info.log`),
     }),
-    // errors console log
-    new (winston.transports.Console)({
-      level: 'error',
-      name: 'error-console',
-      colorize: true,
-    }),
     // errors log file
     new (winston.transports.File)({
       level: 'error',
