@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://blog-js.com/login.defs#",
+  "definitions": {
+    "login": {
+      "type": "object",
+      "required": [
+        "account",
+        "password"
+      ],
+      "properties": {
+        "account": {
+          "description": "The account or email of user",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "password": {
+          "description": "The password of user",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        }
+      }
+    }
+  }
+}

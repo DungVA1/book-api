@@ -12,6 +12,17 @@
         "type": "keyword"
       }
     },
+    "account": {
+      "type": "text",
+      "fields": {
+        "raw": {
+          "type": "keyword"
+        }
+      }
+    },
+    "password": {
+      "type": "keyword"
+    },
     "role": {
       "id": {
         "type": "keyword"

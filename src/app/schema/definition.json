@@ -1,5 +1,8 @@
 {
   "login": {
+    "definitions": [
+      "definitions/login.defs.json"
+    ],
     "POST": "login.schema.json"
   }
 }

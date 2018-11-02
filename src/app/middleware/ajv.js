@@ -22,6 +22,7 @@ export const validateBody = async (req, res, next) => {
     const urlBase = req.url.split('/')[1];
     const method = req.method;
     const schemaFileName = _.get(definition, [urlBase, method]);
+    const schemaDefinitions = _.get(definition, [urlBase, 'definitions']);
     if (!schemaFileName) {
       logger.error(`[${__dirname}/ajv.js]: Request to ${method} ${req.url} need to validate body but have not defined schema yet`);
 
@@ -37,6 +38,21 @@ export const validateBody = async (req, res, next) => {
       `../schema/${schemaFileName}`
     ), 'utf8');
     const ajv = new AJV({ allErrors: true });
+    // Load defintions related
+    if (schemaDefinitions && schemaDefinitions.length) {
+      const promises = schemaDefinitions.map((def) => {
+        return fs.readFile(path.resolve(
+          __dirname,
+          `../schema/${def}`
+        ), 'utf8');
+      });
+
+      const definitions = await Promise.all(promises);
+      definitions.forEach((def) => {
+        ajv.addSchema(JSON.parse(def));
+      });
+    }
+    // Validate body
     const valid = ajv.validate(JSON.parse(schemaObj), req.body);
     if (!valid) {
       return res.status(statusCode.UNPROCESSABLE_ENTITY).json({

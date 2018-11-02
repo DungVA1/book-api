@@ -9,8 +9,8 @@ import { LOGIN_FAILED, LOGIN_SUCCESSFULLY } from '../../constant/common/error-me
  * @param {Object} body The login body request. Always contain 2 fields userName, password
  */
 export const login = async (body) => {
-  const { userName, password } = body;
-  if (userName === 'admin' && password === '123456') {
+  const { account, password } = body;
+  if (account === 'admin' && password === '123456') {
     return {
       status: statusCode.SUCCESS,
       error: false,
