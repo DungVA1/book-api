@@ -1,8 +1,9 @@
 import AJV from 'ajv';
 import fs from 'fs-extra';
 import path from 'path';
+import _ from 'lodash';
 import logger from '../../lib/common/logger';
-import { UNPROCESSABLE_ENTITY } from '../../constant/common/error-message';
+import { UNPROCESSABLE_ENTITY, EXCEPTION } from '../../constant/common/error-message';
 import { statusCode } from '../../constant/common/status-code';
 import definition from '../schema/definition.json';
 import exception from '../../constant/common/exception';
@@ -20,7 +21,17 @@ export const validateBody = async (req, res, next) => {
   try {
     const urlBase = req.url.split('/')[1];
     const method = req.method;
-    const schemaFileName = definition[urlBase][method];
+    const schemaFileName = _.get(definition, [urlBase, method]);
+    if (!schemaFileName) {
+      logger.error(`[${__dirname}/ajv.js]: Request to ${method} ${req.url} need to validate body but have not defined schema yet`);
+
+      return res.status(statusCode.EXCEPTION).json({
+        status: statusCode.EXCEPTION,
+        error: true,
+        message: EXCEPTION,
+        messageCode: 'EXCEPTION',
+      });
+    }
     const schemaObj = await fs.readFile(path.resolve(
       __dirname,
       `../schema/${schemaFileName}`
@@ -39,7 +50,7 @@ export const validateBody = async (req, res, next) => {
 
     next();
   } catch (ex) {
-    logger.error(`[${__dirname}]: ${JSON.stringify(ex)}`);
+    logger.error(`[${__dirname}/ajv.js]: ${ex}`);
     res.status(statusCode.EXCEPTION).json(exception);
   }
 };
