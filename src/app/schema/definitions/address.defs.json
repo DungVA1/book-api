@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://blog-js.com/address.defs#",
+  "definitions": {
+    "address": {
+      "required": [
+        "city",
+        "district"
+      ],
+      "type": "object",
+      "properties": {
+        "city": {
+          "description": "The user's city address",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "district": {
+          "description": "The user's district address",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "commune": {
+          "description": "The user's district commune",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "detail": {
+          "description": "The user's district commune",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      }
+    }
+  }
+}

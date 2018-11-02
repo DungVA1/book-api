@@ -38,10 +38,33 @@
       "type": "keyword"
     },
     "address": {
-      "type": "text",
-      "fields": {
-        "raw": {
-          "type": "keyword"
+      "properties": {
+        "city": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "district": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "commune": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "detail": {
+          "type": "text"
         }
       }
     },

@@ -7,11 +7,12 @@
       "type": "object",
       "required": [
         "name",
-        "email"
+        "email",
+        "phone"
       ],
       "properties": {
         "name": {
-          "description": "The account or email of user",
+          "description": "The user's name",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -21,6 +22,29 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 255
+        },
+        "address": {
+          "$ref": "address.defs#/definitions/address"
+        },
+        "phone": {
+          "description": "The user's phone",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "examples": [
+            "0972726021"
+          ],
+          "pattern": "^[0-9]{1,20}$"
+        },
+        "dateOfBirth": {
+          "description": "The user's birthday",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "examples": [
+            "15/05/1994"
+          ],
+          "pattern": "^([0-2]?[1-9]|[3]?[0-1])\/([0]?[1-9]|[1]?[0-2])\/([0-9]{4})$"
         }
       }
     }

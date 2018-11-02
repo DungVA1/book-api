@@ -8,7 +8,8 @@
   "register": {
     "definitions": [
       "definitions/login.defs.json",
-      "definitions/user.defs.json"
+      "definitions/user.defs.json",
+      "definitions/address.defs.json"
     ],
     "POST": "register.schema.json"
   }
