@@ -7,3 +7,5 @@ export const authRoute = express.Router();
 authRoute.post('/register', validateBody, authHandlers);
 
 authRoute.post('/login', validateBody, authHandlers);
+
+authRoute.post('/change-password', validateBody, authHandlers);
