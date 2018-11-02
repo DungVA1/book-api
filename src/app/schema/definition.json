@@ -4,5 +4,12 @@
       "definitions/login.defs.json"
     ],
     "POST": "login.schema.json"
+  },
+  "register": {
+    "definitions": [
+      "definitions/login.defs.json",
+      "definitions/user.defs.json"
+    ],
+    "POST": "register.schema.json"
   }
 }
