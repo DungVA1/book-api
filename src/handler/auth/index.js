@@ -1,4 +1,5 @@
 import { login } from './login.handler';
+import { register } from './register.handler';
 
 /**
  * Should be define an object with action, method, function handle action here
@@ -6,6 +7,9 @@ import { login } from './login.handler';
 const defineHandler = {
   login: {
     POST: login,
+  },
+  register: {
+    POST: register,
   },
 };
 

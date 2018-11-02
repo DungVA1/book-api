@@ -4,8 +4,6 @@ import authHandlers from '../../handler/auth';
 
 export const authRoute = express.Router();
 
-authRoute.get('/register/:id', validateBody, (req, res) => {
-  res.send('GET /register api');
-});
+authRoute.get('/register/:id', validateBody, authHandlers);
 
 authRoute.post('/login', validateBody, authHandlers);
