@@ -96,6 +96,49 @@ export default class ElasticSearch {
     }
   }
 
+  async getList (filter, sort, from = 0, size = 20) {
+    try {
+      this.ESBody = Object.assign({
+        body: filter,
+        sort,
+        from,
+        size,
+        scroll: '5m',
+      }, this.ESBody);
+      const result = await this.connection.search(this.ESBody);
+
+      return {
+        status: 200,
+        data: result.hits.hits,
+        total: result.hits.total,
+      };
+    } catch (err) {
+      return handleESException(err);
+    }
+  }
+
+  async scroll (scrollId) {
+    try {
+      this.ESBody = Object.assign({
+        scroll: '5m',
+        scrollId,
+      }, this.ESBody);
+      const result = await this.connection.scroll(this.ESBody);
+
+      if (!result.hits.total) {
+        this.connection.clearScroll(scrollId);
+      }
+
+      return {
+        status: 200,
+        data: result.hits.hits,
+        total: result.hits.total,
+      };
+    } catch (err) {
+      return handleESException(err);
+    }
+  }
+
   async getCount () {
     try {
       const { count } = await this.connection.count(this.ESBody);
