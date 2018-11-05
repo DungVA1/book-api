@@ -1,4 +1,4 @@
-import { getAllUsers } from './user.handler';
+import { getAllUsers, insertUser } from './user.handler';
 
 /**
  * Should be define an object with action, method, function handle action here
@@ -6,6 +6,7 @@ import { getAllUsers } from './user.handler';
 const defineHandler = {
   users: {
     GET: getAllUsers,
+    POST: insertUser,
   },
 };
 

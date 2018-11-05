@@ -1,5 +1,5 @@
 import express from 'express';
-import { validateBody } from '../middleware/ajv';
+// import { validateBody } from '../middleware/ajv';
 import userHandlers from '../../handler/user';
 
 export const userRoute = express.Router();
@@ -9,5 +9,5 @@ const routers = [
   '/users',
 ];
 
-userRoute.post(routers, validateBody, userHandlers);
+userRoute.post(routers, userHandlers);
 userRoute.get(routers, userHandlers);
