@@ -1,4 +1,4 @@
-import { getAll, insert } from '../../model/user-model';
+import { getAll, insert } from '../../repository/user-model';
 
 export const getAllUsers = () => {
   return {

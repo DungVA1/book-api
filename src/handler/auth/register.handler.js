@@ -1,4 +1,4 @@
-import { insert } from '../../model/user-model';
+import { insert } from '../../repository/user-model';
 
 export const register = (body) => {
   insert(body);
