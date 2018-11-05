@@ -36,6 +36,10 @@ export const decode = (token) => {
  * @return {Statement} Return statement of request is valid or invalid
  */
 export const verify = (req, res, next) => {
+  if (req.method.toUpperCase() === 'GET') {
+    return next();
+  }
+
   const token = extractHeader(req);
   if (!token) {
     return res.status(statusCode.UNAUTHORIZE).json({

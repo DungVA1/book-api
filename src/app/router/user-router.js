@@ -1,23 +1,13 @@
 import express from 'express';
+import { validateBody } from '../middleware/ajv';
+import userHandlers from '../../handler/user';
 
 export const userRoute = express.Router();
 
-userRoute.get('/users', (req, res) => {
-  res.send('GET /users api');
-});
+// List routers of auth api should be define in array routers
+const routers = [
+  '/users',
+];
 
-userRoute.post('/users', (req, res) => {
-  res.send('POST /users api');
-});
-
-userRoute.put('/users', (req, res) => {
-  res.send('PUT /users api');
-});
-
-userRoute.patch('/users', (req, res) => {
-  res.send('PATCH /users api');
-});
-
-userRoute.delete('/users', (req, res) => {
-  res.send('DELETE /users api');
-});
+userRoute.post(routers, validateBody, userHandlers);
+userRoute.get(routers, userHandlers);

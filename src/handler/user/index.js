@@ -1,15 +1,11 @@
-import { login } from './login.handler';
-import { register } from './register.handler';
+import { getAllUsers } from './user.handler';
 
 /**
  * Should be define an object with action, method, function handle action here
  */
 const defineHandler = {
-  login: {
-    POST: login,
-  },
-  register: {
-    POST: register,
+  users: {
+    GET: getAllUsers,
   },
 };
 
@@ -21,7 +17,7 @@ const defineHandler = {
  * @param {Objec} req The request express object
  * @param {Object} res The response express object
  */
-const authHandlers = async (req, res) => {
+const userHandlers = async (req, res) => {
   const urlBase = req.url.split('/')[1];
   const method = req.method;
   const fn = defineHandler[urlBase][method];
@@ -30,4 +26,4 @@ const authHandlers = async (req, res) => {
   return res.status(result.status).json(result);
 };
 
-export default authHandlers;
+export default userHandlers;
