@@ -20,7 +20,7 @@ export default class ElasticSearch {
   }
 
   async closeConnection () {
-    this.connection.close();
+    await this.connection.close();
   }
 
   async insert (body) {
@@ -41,12 +41,13 @@ export default class ElasticSearch {
     } catch (err) {
       response = handleESException(err);
     }
-    this.closeConnection();
+    await this.closeConnection();
 
     return response;
   }
 
   async update (id, body) {
+    let response;
     try {
       this.ESBody = Object.assign({
         id,
@@ -56,17 +57,21 @@ export default class ElasticSearch {
 
       const { result } = await this.connection.update(this.ESBody);
 
-      return {
+      response = {
         status: 200,
         message: result === 'noop' ? 'nothing to changed' : 'updated',
         id,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 
   async remove (id) {
+    let response;
     try {
       this.ESBody = Object.assign({
         id,
@@ -75,17 +80,21 @@ export default class ElasticSearch {
 
       const { result } = await this.connection.delete(this.ESBody);
 
-      return {
+      response = {
         status: 200,
         message: result,
         id,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 
   async getById (id) {
+    let response;
     try {
       this.ESBody = Object.assign({
         id,
@@ -93,18 +102,22 @@ export default class ElasticSearch {
 
       const { _source, _version } = await this.connection.get(this.ESBody);
 
-      return {
+      response = {
         status: 200,
         data: _source,
         id,
         version: _version,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 
   async getList (filter, sort, from = 0, size = 20) {
+    let response;
     try {
       this.ESBody = Object.assign({
         body: filter,
@@ -115,17 +128,21 @@ export default class ElasticSearch {
       }, this.ESBody);
       const result = await this.connection.search(this.ESBody);
 
-      return {
+      response = {
         status: 200,
         data: result.hits.hits,
         total: result.hits.total,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 
   async scroll (scrollId) {
+    let response;
     try {
       this.ESBody = Object.assign({
         scroll: '5m',
@@ -137,26 +154,33 @@ export default class ElasticSearch {
         this.connection.clearScroll(scrollId);
       }
 
-      return {
+      response = {
         status: 200,
         data: result.hits.hits,
         total: result.hits.total,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 
   async getCount () {
+    let response;
     try {
       const { count } = await this.connection.count(this.ESBody);
 
-      return {
+      response = {
         status: 200,
         data: count,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    await this.closeConnection();
+
+    return response;
   }
 }
