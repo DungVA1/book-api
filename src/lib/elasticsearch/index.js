@@ -19,6 +19,18 @@ export default class ElasticSearch {
     };
   }
 
+  async checkConnection () {
+    let response;
+    try {
+      response = await this.connection.ping();
+    } catch (err) {
+      response = handleESException(err);
+    }
+    await this.closeConnection();
+
+    return response;
+  }
+
   async closeConnection () {
     await this.connection.close();
   }
