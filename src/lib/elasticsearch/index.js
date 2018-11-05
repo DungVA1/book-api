@@ -8,7 +8,7 @@ const handleESException = (error) => {
   return exceptionError;
 };
 
-export default class ElasticSearchORM {
+export default class ElasticSearch {
   constructor (index, type) {
     this.connection = new elasticsearch.Client({
       host: `${process.env.ES_HOST || 'localhost'}:9200`,
@@ -58,7 +58,7 @@ export default class ElasticSearchORM {
     }
   }
 
-  async delete (id) {
+  async _delete (id) {
     try {
       this.ESBody = Object.assign({
         id,
@@ -71,6 +71,38 @@ export default class ElasticSearchORM {
         status: 200,
         message: result,
         id,
+      };
+    } catch (err) {
+      return handleESException(err);
+    }
+  }
+
+  async getById (id) {
+    try {
+      this.ESBody = Object.assign({
+        id,
+      }, this.ESBody);
+
+      const { _source, _version } = await this.connection.get(this.ESBody);
+
+      return {
+        status: 200,
+        data: _source,
+        id,
+        version: _version,
+      };
+    } catch (err) {
+      return handleESException(err);
+    }
+  }
+
+  async getCount () {
+    try {
+      const { count } = await this.connection.count(this.ESBody);
+
+      return {
+        status: 200,
+        data: count,
       };
     } catch (err) {
       return handleESException(err);

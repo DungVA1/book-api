@@ -1,3 +1,6 @@
+// import ElasticSearch from '../lib/elasticsearch';
+// const { _delete, insert, update } = new ElasticSearch('user', 'user');
+
 const mockDatabase = {
   hits: {
     hits: [
@@ -29,15 +32,15 @@ const mockDatabase = {
   },
 };
 
-export const getAll = () => {
+export const getAllUsers = () => {
   return mockDatabase;
 };
 
-export const getById = (id) => {
+export const getUserById = (id) => {
   return mockDatabase[id];
 };
 
-export const insert = (body) => {
+export const insertUser = (body) => {
   mockDatabase.hits.hits.push(body);
 
   return {
