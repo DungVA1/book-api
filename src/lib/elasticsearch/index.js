@@ -19,7 +19,12 @@ export default class ElasticSearch {
     };
   }
 
+  async closeConnection () {
+    this.connection.close();
+  }
+
   async insert (body) {
+    let response;
     try {
       this.ESBody = Object.assign({
         body,
@@ -28,14 +33,17 @@ export default class ElasticSearch {
 
       const { _id, result } = await this.connection.index(this.ESBody);
 
-      return {
+      response = {
         status: 201,
         message: result,
         id: _id,
       };
     } catch (err) {
-      return handleESException(err);
+      response = handleESException(err);
     }
+    this.closeConnection();
+
+    return response;
   }
 
   async update (id, body) {
