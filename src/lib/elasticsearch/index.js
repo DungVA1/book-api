@@ -58,7 +58,7 @@ export default class ElasticSearch {
     }
   }
 
-  async _delete (id) {
+  async remove (id) {
     try {
       this.ESBody = Object.assign({
         id,
