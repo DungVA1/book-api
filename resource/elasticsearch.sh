@@ -1,0 +1,1 @@
+curl -w %{http_code} localhost:9200 -s -o /dev/null
