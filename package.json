@@ -9,7 +9,9 @@
     "build": "npm run clean && babel src -d dist && babel src/app/schema -d dist/app/schema --copy-files",
     "production": "node dist/index.js",
     "start": "nodemon src/index.js --exec babel-node",
-    "eslint": "eslint src"
+    "eslint": "eslint src",
+    "elastic:init": "bash ./resource/elastic.init.sh",
+    "elastic:clear": "bash ./resource/elastic.clear.sh"
   },
   "pre-commit.silent": true,
   "pre-commit": [

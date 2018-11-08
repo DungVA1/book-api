@@ -1,45 +1,8 @@
 {
-  "properties": {
-    "name": {
-      "type": "text",
-      "fields": {
-        "type": "keyword"
-      }
-    },
-    "email": {
-      "type": "text",
-      "fields": {
-        "type": "keyword"
-      }
-    },
-    "account": {
-      "type": "text",
-      "fields": {
-        "raw": {
-          "type": "keyword"
-        }
-      }
-    },
-    "password": {
-      "type": "keyword"
-    },
-    "role": {
-      "id": {
-        "type": "keyword"
-      },
-      "name": {
-        "type": "text",
-        "fields": {
-          "type": "keyword"
-        }
-      }
-    },
-    "status": {
-      "type": "keyword"
-    },
-    "address": {
+  "mappings": {
+    "user": {
       "properties": {
-        "city": {
+        "name": {
           "type": "text",
           "fields": {
             "raw": {
@@ -47,7 +10,7 @@
             }
           }
         },
-        "district": {
+        "email": {
           "type": "text",
           "fields": {
             "raw": {
@@ -55,7 +18,7 @@
             }
           }
         },
-        "commune": {
+        "account": {
           "type": "text",
           "fields": {
             "raw": {
@@ -63,30 +26,79 @@
             }
           }
         },
-        "detail": {
-          "type": "text"
-        }
-      }
-    },
-    "phone": {
-      "type": "text",
-      "fields": {
-        "raw": {
+        "password": {
           "type": "keyword"
+        },
+        "role": {
+          "properties": {
+            "id": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "keyword"
+        },
+        "address": {
+          "properties": {
+            "city": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "district": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "commune": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "detail": {
+              "type": "text"
+            }
+          }
+        },
+        "phone": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "dateOfBirth": {
+          "type": "date"
+        },
+        "numPost": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "date"
+        },
+        "updatedAt": {
+          "type": "date"
         }
       }
-    },
-    "dateOfBirth": {
-      "type": "date"
-    },
-    "numPost": {
-      "type": "integer"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
   }
 }

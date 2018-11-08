@@ -1,28 +1,8 @@
 {
-  "properties": {
-    "title": {
-      "type": "text",
-      "fields": {
-        "raw": {
-          "type": "keyword"
-        }
-      }
-    },
-    "content": {
-      "type": "text"
-    },
-    "status": {
-      "type": "keyword"
-    },
-    "tags": {
-      "type": "keyword"
-    },
-    "user": {
+  "mappings": {
+    "post": {
       "properties": {
-        "id": {
-          "type": "keyword"
-        },
-        "name": {
+        "title": {
           "type": "text",
           "fields": {
             "raw": {
@@ -30,52 +10,76 @@
             }
           }
         },
-        "email": {
-          "type": "text",
-          "fields": {
-            "raw": {
-              "type": "keyword"
-            }
-          }
-        }
-      }
-    },
-    "pinToTop": {
-      "type": "boolean"
-    },
-    "position": {
-      "type": "integer"
-    },
-    "comments": {
-      "properties": {
-        "cmtContent": {
+        "content": {
           "type": "text"
         },
-        "cmtAuthorId": {
+        "status": {
           "type": "keyword"
         },
-        "cmtAuthorName": {
-          "type": "text"
+        "tags": {
+          "type": "keyword"
         },
-        "like": {
+        "user": {
+          "properties": {
+            "id": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "email": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "pinToTop": {
+          "type": "boolean"
+        },
+        "position": {
           "type": "integer"
         },
-        "cmtCreatedAt": {
+        "comments": {
+          "properties": {
+            "cmtContent": {
+              "type": "text"
+            },
+            "cmtAuthorId": {
+              "type": "keyword"
+            },
+            "cmtAuthorName": {
+              "type": "text"
+            },
+            "like": {
+              "type": "integer"
+            },
+            "cmtCreatedAt": {
+              "type": "date"
+            },
+            "cmtUpdatedAt": {
+              "type": "date"
+            }
+          }
+        },
+        "view": {
+          "type": "integer"
+        },
+        "createdAt": {
           "type": "date"
         },
-        "cmtUpdatedAt": {
+        "updatedAt": {
           "type": "date"
         }
       }
-    },
-    "view": {
-      "type": "integer"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
   }
 }

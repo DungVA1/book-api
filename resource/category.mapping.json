@@ -1,18 +1,7 @@
 {
-  "properties": {
-    "name": {
-      "type": "text",
-      "fields": {
-        "raw": {
-          "type": "keyword"
-        }
-      }
-    },
-    "user": {
+  "mappings": {
+    "category": {
       "properties": {
-        "id": {
-          "type": "keyword"
-        },
         "name": {
           "type": "text",
           "fields": {
@@ -21,24 +10,39 @@
             }
           }
         },
-        "email": {
-          "type": "text",
-          "fields": {
-            "raw": {
+        "user": {
+          "properties": {
+            "id": {
               "type": "keyword"
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "email": {
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
             }
           }
+        },
+        "numPost": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "date"
+        },
+        "updatedAt": {
+          "type": "date"
         }
       }
-    },
-    "numPost": {
-      "type": "integer"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
   }
 }

@@ -1,18 +1,22 @@
 {
-  "properties": {
-    "content": {
-      "type": "text",
-      "fields": {
-        "raw": {
-          "type": "keyword"
+  "mappings": {
+    "tag": {
+      "properties": {
+        "content": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          }
+        },
+        "view": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "date"
         }
       }
-    },
-    "view": {
-      "type": "integer"
-    },
-    "createdAt": {
-      "type": "date"
     }
   }
 }
