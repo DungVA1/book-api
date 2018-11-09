@@ -3,7 +3,7 @@ import logger from '../common/logger';
 import exceptionError from '../../constant/common/exception';
 
 const handleESException = (error) => {
-  logger.error(`[${__dirname}/index.js]: ${JSON.stringify(error)}`);
+  logger.error(`[${__dirname}/index.js ]: ${JSON.stringify(error)}`);
 
   return exceptionError;
 };

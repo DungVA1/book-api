@@ -27,7 +27,7 @@ export const validateBody = async (req, res, next) => {
     const schemaFileName = _.get(definition, [urlBase, method]);
     const schemaDefinitions = _.get(definition, [urlBase, 'definitions']);
     if (!schemaFileName) {
-      logger.error(`[${__dirname}/ajv.js]: Request to ${method} ${req.url} need to validate body but have not defined schema yet`);
+      logger.error(`[${__dirname}/ajv.js ]: Request to ${method} ${req.url} need to validate body but have not defined schema yet`);
 
       return res.status(statusCode.EXCEPTION).json({
         status: statusCode.EXCEPTION,
@@ -69,7 +69,7 @@ export const validateBody = async (req, res, next) => {
 
     next();
   } catch (ex) {
-    logger.error(`[${__dirname}/ajv.js]: ${ex}`);
+    logger.error(`[${__dirname}/ajv.js ]: ${ex}`);
     res.status(statusCode.EXCEPTION).json(exception);
   }
 };
