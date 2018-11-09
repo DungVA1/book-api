@@ -8,9 +8,35 @@ import {
   authRoute,
 } from './router';
 import packageJson from '../../package.json';
+import expressSwagger from 'express-swagger-generator';
 
 const baseUrl = process.env.BASE_URL || '/api';
 const version = `v${(packageJson.version.split('.')[0] || 1)}`;
+let options = {
+  swaggerDefinition: {
+      info: {
+          description: 'This is blog document api swagger',
+          title: 'Swagger',
+          version: packageJson.version,
+      },
+      host: 'localhost:3000',
+      basePath: `${baseUrl}/${version}`,
+      produces: [
+          'application/json',
+      ],
+      schemes: ['http', 'https'],
+      securityDefinitions: {
+          JWT: {
+              type: 'apiKey',
+              in: 'header',
+              name: 'x-access-token',
+              description: '',
+          },
+      },
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./router/*.js'], //Path to the API handle folder
+};
 
 export const initExpressApi = () => {
   const app = express();
@@ -23,7 +49,7 @@ export const initExpressApi = () => {
     userRoute,
     authRoute,
   ]);
-
+  expressSwagger(app)(options);
   app.listen(process.env.EXPRESS_PORT || 3000, () => {
     logger.info('LISTENNING AT 3000');
   });
