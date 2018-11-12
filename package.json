@@ -4,7 +4,7 @@
   "description": "This is service to management book",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "clean": "rimraf dist",
     "build": "npm run clean && babel src -d dist && babel src/app/schema -d dist/app/schema --copy-files",
     "production": "node dist/index.js",
