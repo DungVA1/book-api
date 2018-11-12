@@ -1,0 +1,14 @@
+image: node:8
+
+cache:
+  path:
+  - node_modules/
+
+stages:
+  - eslint
+
+eslint:
+  stage: eslint
+  script:
+    - npm run install
+    - npm run eslint
