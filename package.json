@@ -11,7 +11,8 @@
     "start": "nodemon src/index.js --exec babel-node",
     "eslint": "eslint src",
     "elastic:init": "bash ./resource/elastic.init.sh",
-    "elastic:clear": "bash ./resource/elastic.clear.sh"
+    "elastic:clear": "bash ./resource/elastic.clear.sh",
+    "docker:build": "docker build . -t dungva/api-blog"
   },
   "pre-commit.silent": true,
   "pre-commit": [
