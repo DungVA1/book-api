@@ -1,0 +1,9 @@
+version: '1'
+services:
+  elasticsearch:
+    image: elasticsearch:5.3.1
+  api:
+    build: .
+    container_name: api-blog
+    ports:
+     - "3000:3000"
