@@ -11,7 +11,7 @@ const handleESException = (error) => {
 export default class ElasticSearch {
   constructor (index, type) {
     this.connection = new elasticsearch.Client({
-      host: `${process.env.ES_HOST || 'localhost'}:9200`,
+      host: `${process.env.ES_HOST || process.env.IP_ADDRESS}:9200`,
     });
     this.ESBody = {
       index,
