@@ -1,4 +1,5 @@
 import elasticsearch from 'elasticsearch';
+import ip from 'quick-local-ip';
 import logger from '../common/logger';
 import exceptionError from '../../constant/common/exception';
 
@@ -10,8 +11,9 @@ const handleESException = (error) => {
 
 export default class ElasticSearch {
   constructor (index, type) {
+    const ipV4Local = ip.getLocalIP4();
     this.connection = new elasticsearch.Client({
-      host: `${process.env.ES_HOST || 'localhost'}:9200`,
+      host: `${process.env.ES_HOST || ipV4Local}:9200`,
     });
     this.ESBody = {
       index,
