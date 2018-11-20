@@ -1,9 +1,33 @@
-version: '1'
+version: "3"
 services:
   elasticsearch:
-    image: elasticsearch:5.3.1
+    image: dungva/elasticsearch
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    restart: always
+    volumes:
+      - elasticsearch_data:/var/lib/elasticsearch/data
+
   api:
     build: .
     container_name: api-blog
+    restart: always
     ports:
-     - "3000:3000"
+      - "3000:3000"
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    command: >
+      /bin/bash -c "
+        while ! curl -X GET localhost:9200;
+        do
+          echo sleeping;
+          sleep 3;
+        done;
+        echo Connected!;"
+
+volumes:
+  elasticsearch_data:
+    driver: local
