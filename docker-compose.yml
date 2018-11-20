@@ -5,23 +5,19 @@ services:
     container_name: elasticsearch
     ports:
       - "9200:9200"
-    restart: always
     volumes:
       - elasticsearch_data:/var/lib/elasticsearch/data
 
   api:
     build: .
     container_name: api-blog
-    restart: always
     ports:
       - "3000:3000"
-    depends_on:
-      - elasticsearch
     links:
       - elasticsearch
     command: >
       /bin/bash -c "
-        while ! curl -X GET localhost:9200;
+        while ! curl -X GET elasticsearch:9200;
         do
           echo sleeping;
           sleep 3;
