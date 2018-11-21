@@ -8,6 +8,9 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+# Copy script to check DB is started before run api
+COPY ./resource/wait-for.sh ./
+
 RUN npm install
 # If you are building your code for production
 # RUN npm install --only=production
