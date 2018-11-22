@@ -12,7 +12,8 @@
     "eslint": "eslint src",
     "elastic:init": "bash ./resource/elastic.init.sh",
     "elastic:clear": "bash ./resource/elastic.clear.sh",
-    "docker:build": "docker build . -t dungva/api-blog"
+    "docker:build": "docker build . -t dungva/api-blog",
+    "docker-els:build": "docker build -t dungva/elasticsearch -f elasticsearch.dockerfile ."
   },
   "pre-commit.silent": true,
   "pre-commit": [
