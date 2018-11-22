@@ -1,5 +1,15 @@
 FROM node:8
 
+# Use wget to download file *.tar.gz
+# RUN apt-get update && apt-get install -y wget
+
+ENV DOCKERIZE_VERSION v0.5.0
+
+COPY ./resource/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz .
+
+RUN tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -7,9 +17,6 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-
-# Copy script to check DB is started before run api
-COPY ./resource/wait-for.sh ./
 
 RUN npm install
 # If you are building your code for production
@@ -22,4 +29,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "production" ]
+CMD dockerize -wait tcp://elasticsearch:9200 -timeout 1m && npm run production

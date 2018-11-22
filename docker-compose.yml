@@ -4,26 +4,26 @@ services:
     image: dungva/elasticsearch
     container_name: elasticsearch
     ports:
-      - "9200:9200"
+      - 9200:9200
     volumes:
       - elasticsearch_data:/var/lib/elasticsearch/data
+    networks:
+      - db-net
 
   api:
     build: .
     container_name: api-blog
     ports:
-      - "3000:3000"
+      - 3000:3000
     links:
       - elasticsearch
-    command: >
-      /bin/bash -c "
-        while ! curl -X GET elasticsearch:9200;
-        do
-          echo sleeping;
-          sleep 3;
-        done;
-        echo Connected!;"
+    networks:
+      - db-net
 
 volumes:
   elasticsearch_data:
     driver: local
+
+networks:
+  db-net:
+    driver: bridge

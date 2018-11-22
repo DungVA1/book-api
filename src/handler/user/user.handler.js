@@ -1,9 +1,13 @@
-import { getAll, insert } from '../../repository/user-model';
+import { insert } from '../../repository/user-model';
+import ES from '../../lib/elasticsearch/index';
 
-export const getAllUsers = () => {
+export const getAllUsers = async () => {
+  const els = new ES();
+  const alive = await els.checkConnection();
+
   return {
+    data: alive,
     status: 200,
-    users: getAll(),
   };
 };
 
