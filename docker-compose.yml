@@ -1,7 +1,9 @@
 version: '3'
 services:
   elasticsearch:
-    image: dungva/elasticsearch
+    build:
+      context: .
+      dockerfile: elasticsearch.dockerfile
     container_name: elasticsearch
     restart: always
     ports:
