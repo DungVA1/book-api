@@ -27,6 +27,6 @@ export const initExpressApi = () => {
     authRoute,
   ]);
   app.listen(process.env.EXPRESS_PORT || 3000, () => {
-    logger.info('LISTENNING AT 3000');
+    logger.info(`LISTENNING AT ${process.env.EXPRESS_PORT || 3000}`);
   });
 };

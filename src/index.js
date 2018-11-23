@@ -6,7 +6,7 @@ import './app/config/load-env';
 
 const es = new ES();
 es.checkConnection().then(r => {
-  if (r) {
+  if (!r.error) {
     logger.info('Elasticsearch started successfully');
     initExpressApi();
   } else {

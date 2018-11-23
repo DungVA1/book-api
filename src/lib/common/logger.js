@@ -5,7 +5,7 @@ import moment from 'moment';
 const { combine, timestamp, printf } = format;
 
 const myFormat = printf(info => {
-  return `[${info.timestamp}][${info.level.toUpperCase()}]${info.message}`;
+  return `[${info.timestamp}][${info.level.toUpperCase()}] - ${info.message}`;
 });
 
 const log = winston.createLogger({
