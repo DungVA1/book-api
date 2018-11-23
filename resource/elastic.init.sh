@@ -21,4 +21,4 @@ curl -X PUT -H "Content-Type: application/json" $ES_HOST:9200/tag -d @"./resourc
 curl -X PUT -H "Content-Type: application/json" $ES_HOST:9200/role -d @"./resource/role.mapping.json"
 
 # Init data
-curl -X PUT -H "Content-Type: application/json" $ES_HOST:9200/user/user -d @"./resource/user.data.json"
+curl -X POST -H "Content-Type: application/json" $ES_HOST:9200/user/user -d @"./resource/user.data.json"
