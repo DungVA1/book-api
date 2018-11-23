@@ -1,11 +1,21 @@
+# v1: Ignore parts unimportant for build docker images
+
 # node_modules folder
 node_modules
-
-# public folder
-public
 
 # build folder
 dist
 
 # log folder
 logs
+
+# test folder
+test
+
+gitignore
+gitlab-ci.yml
+eslintrc
+dockerfile
+elatticsearch.dockerfile
+docker-compose.yml
+README.md
