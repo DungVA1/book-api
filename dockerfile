@@ -4,6 +4,8 @@ FROM node:8
 # RUN apt-get update && apt-get install -y wget
 
 ENV DOCKERIZE_VERSION v0.5.0
+ENV IS_DOCKER true
+ENV ES_HOST elasticsearch
 
 COPY ./resource/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz .
 

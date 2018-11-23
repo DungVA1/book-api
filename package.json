@@ -10,7 +10,7 @@
     "production": "cross-env NODE_ENV=product node dist/index.js",
     "start": "cross-env NODE_ENV=develop nodemon src/index.js --exec babel-node",
     "eslint": "eslint src",
-    "elastic:init": "cross-env bash ./resource/elastic.init.sh",
+    "elastic:init": "bash ./resource/elastic.init.sh",
     "elastic:clear": "bash ./resource/elastic.clear.sh",
     "docker:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build . -t dungva/api-blog",
     "docker-els:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build -t dungva/elasticsearch -f elasticsearch.dockerfile .",
