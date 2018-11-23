@@ -1,0 +1,20 @@
+{
+	"account": "dungva",
+	"address": {
+		"city": "Hà Nội",
+		"district": "Cầu Giấy",
+		"commune": "Dịch Vọng Hậu",
+		"detail": "239 Xuân Thủy"
+	},
+	"dateOfBirth": "1994-05-15",
+	"email": "dungva@gmail.com",
+	"name": "Vũ Anh Dũng",
+	"numPost": 0,
+	"password": "abcd@12345",
+	"phone": "0987654321",
+	"role": {
+		"id": 1,
+		"name": "admin"
+	},
+	"status": "active"
+}
