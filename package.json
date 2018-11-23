@@ -12,9 +12,9 @@
     "eslint": "eslint src",
     "elastic:init": "bash ./resource/elastic.init.sh",
     "elastic:clear": "bash ./resource/elastic.clear.sh",
-    "docker:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build . -t dungva/api-blog",
-    "docker-els:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build -t dungva/elasticsearch -f elasticsearch.dockerfile .",
-    "docker:fullbuild": "cross-env NODE_ENV=product IS_DOCKER=true docker-compose up --build"
+    "docker:build": "cross-env NODE_ENV=product docker build . -t dungva/api-blog",
+    "docker-els:build": "cross-env NODE_ENV=product docker build -t dungva/elasticsearch -f elasticsearch.dockerfile .",
+    "docker:fullbuild": "cross-env NODE_ENV=product docker-compose up --build"
   },
   "pre-commit.silent": true,
   "pre-commit": [
