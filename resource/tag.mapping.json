@@ -1,4 +1,33 @@
 {
+  "settings": {
+    "analysis": {
+      "filter": {
+        "autocomplete_filter": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 20
+        }
+      },
+      "analyzer": {
+        "vietnamese_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "autocomplete_filter",
+            "lowercase",
+            "icu_folding"
+          ]
+        },
+        "standard_analyzer": {
+          "type": "custom",
+          "tokenizer": "lowercase",
+          "filter": [
+            "icu_folding"
+          ]
+        }
+      }
+    }
+  },
   "mappings": {
     "tag": {
       "properties": {

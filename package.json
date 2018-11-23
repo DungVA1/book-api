@@ -7,14 +7,14 @@
     "test": "mocha",
     "clean": "rimraf dist",
     "build": "npm run clean && babel src -d dist && babel src/app/schema -d dist/app/schema --copy-files && babel src/app/swagger -d dist/app/swagger --copy-files",
-    "production": "node dist/index.js",
-    "start": "nodemon src/index.js --exec babel-node",
+    "production": "cross-env NODE_ENV=product node dist/index.js",
+    "start": "cross-env NODE_ENV=develop nodemon src/index.js --exec babel-node",
     "eslint": "eslint src",
-    "elastic:init": "bash ./resource/elastic.init.sh",
+    "elastic:init": "cross-env bash ./resource/elastic.init.sh",
     "elastic:clear": "bash ./resource/elastic.clear.sh",
-    "docker:build": "docker build . -t dungva/api-blog",
-    "docker-els:build": "docker build -t dungva/elasticsearch -f elasticsearch.dockerfile .",
-    "docker:fullbuild": "docker-compose up --build"
+    "docker:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build . -t dungva/api-blog",
+    "docker-els:build": "cross-env NODE_ENV=product IS_DOCKER=true docker build -t dungva/elasticsearch -f elasticsearch.dockerfile .",
+    "docker:fullbuild": "cross-env NODE_ENV=product IS_DOCKER=true docker-compose up --build"
   },
   "pre-commit.silent": true,
   "pre-commit": [
@@ -35,6 +35,7 @@
     "ajv": "^6.5.4",
     "babel-polyfill": "^6.26.0",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
     "dotenv": "^6.1.0",
     "elasticsearch": "^15.2.0",
     "express": "^4.16.4",
