@@ -29,4 +29,6 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD dockerize -wait tcp://elasticsearch:9200 -timeout 5m && npm run elastic:init && npm run production
+CMD dockerize -wait tcp://elasticsearch:9200 -timeout 5m && \
+    npm run elastic:init && \
+    npm run production
