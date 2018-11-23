@@ -26,6 +26,8 @@
     │   ├── respository                           # Respository model
     ├── resource                                  # Application's resource
     ├── test                                      # Unit test at here
+    │   ├── api                                   # Test express api
+    │   ├── unit                                  # Test unit function
     ├── .dockerignore
     ├── .env
     ├── .gitignore
