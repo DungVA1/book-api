@@ -19,7 +19,7 @@ export const initExpressApi = () => {
   const app = express();
   app.use(express.json());
   app.use(express.urlencoded());
-  app.all('*', setHeader); // Enable pre-flight for all request
+  app.use(setHeader); // Enable pre-flight for all request
   app.use(cors(corsOption));
   app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
   app.use(/^((?!login|register).)*$/, verify);
