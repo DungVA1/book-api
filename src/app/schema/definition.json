@@ -1,19 +1,11 @@
 {
-  "login": {
-    "definitions": [
-      "definitions/login.defs.json"
-    ],
-    "POST": "login.schema.json"
+  "/login/:id": {
+    "POST": "http://blog-js.com/login.schema#"
   },
-  "register": {
-    "definitions": [
-      "definitions/login.defs.json",
-      "definitions/user.defs.json",
-      "definitions/address.defs.json"
-    ],
-    "POST": "register.schema.json"
+  "/register": {
+    "POST": "http://blog-js.com/register.schema#"
   },
-  "change-password": {
+  "/change-password": {
 
   }
 }
