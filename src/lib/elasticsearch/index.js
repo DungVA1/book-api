@@ -21,10 +21,12 @@ export default class ElasticSearch {
 
   async checkConnection () {
     let response;
+    logger.info('Check health of elasticsearch');
     try {
       response = await this.connection.ping();
+      logger.info('Elasticsearch is connected');
     } catch (err) {
-      response = handleESException(err);
+      throw `Elasticsearch ${err.message}`;
     }
     await this.closeConnection();
 
